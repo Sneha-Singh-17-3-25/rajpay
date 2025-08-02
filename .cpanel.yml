@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/demoebanker/public_html/bankbc
+    - /bin/cp -R * $DEPLOYPATH

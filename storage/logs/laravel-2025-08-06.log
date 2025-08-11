@@ -1,0 +1,44 @@
+[2025-08-06 10:30:47] local.ERROR: Too many arguments, expected arguments "command". {"exception":"[object] (Symfony\\Component\\Console\\Exception\\RuntimeException(code: 0): Too many arguments, expected arguments \"command\". at C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\symfony\\console\\Input\\ArgvInput.php:172)
+[stacktrace]
+#0 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\symfony\\console\\Input\\ArgvInput.php(83): Symfony\\Component\\Console\\Input\\ArgvInput->parseArgument('clear')
+#1 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\symfony\\console\\Input\\Input.php(55): Symfony\\Component\\Console\\Input\\ArgvInput->parse()
+#2 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\symfony\\console\\Command\\Command.php(214): Symfony\\Component\\Console\\Input\\Input->bind(Object(Symfony\\Component\\Console\\Input\\InputDefinition))
+#3 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(170): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#4 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\symfony\\console\\Application.php(1021): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\symfony\\console\\Application.php(275): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Foundation\\Console\\OptimizeCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#6 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\symfony\\console\\Application.php(149): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#7 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(89): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(122): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#9 C:\\xampp74\\htdocs\ajpay\\public_html\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#10 {main}
+"} 
+[2025-08-06 16:07:27] local.ERROR: Method Illuminate\Database\Schema\Blueprint::id does not exist. {"exception":"[object] (BadMethodCallException(code: 0): Method Illuminate\\Database\\Schema\\Blueprint::id does not exist. at C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Traits\\Macroable.php:100)
+[stacktrace]
+#0 C:\\xampp74\\htdocs\ajpay\\public_html\\database\\migrations\\2025_08_06_160112_ondc_seller.php(18): Illuminate\\Database\\Schema\\Blueprint->__call('id', Array)
+#1 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(164): OndcSeller->{closure}(Object(Illuminate\\Database\\Schema\\Blueprint))
+#2 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\helpers.php(1027): Illuminate\\Database\\Schema\\Builder->Illuminate\\Database\\Schema\\{closure}(Object(Illuminate\\Database\\Schema\\Blueprint))
+#3 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(165): tap(Object(Illuminate\\Database\\Schema\\Blueprint), Object(Closure))
+#4 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(237): Illuminate\\Database\\Schema\\Builder->create('ondc_seller', Object(Closure))
+#5 C:\\xampp74\\htdocs\ajpay\\public_html\\database\\migrations\\2025_08_06_160112_ondc_seller.php(25): Illuminate\\Support\\Facades\\Facade::__callStatic('create', Array)
+#6 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(360): OndcSeller->up()
+#7 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(367): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#8 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(178): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(OndcSeller), 'up')
+#9 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(147): Illuminate\\Database\\Migrations\\Migrator->runUp('C:\\\\xampp74\\\\htdo...', 1, false)
+#10 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(96): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#11 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(71): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#12 [internal function]: Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#13 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(29): call_user_func_array(Array, Array)
+#14 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(87): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#15 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(31): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#16 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(572): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#17 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(183): Illuminate\\Container\\Container->call(Array)
+#18 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\symfony\\console\\Command\\Command.php(255): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#19 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(170): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#20 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\symfony\\console\\Application.php(1021): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#21 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\symfony\\console\\Application.php(275): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#22 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\symfony\\console\\Application.php(149): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(89): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#24 C:\\xampp74\\htdocs\ajpay\\public_html\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(122): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 C:\\xampp74\\htdocs\ajpay\\public_html\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 {main}
+"} 

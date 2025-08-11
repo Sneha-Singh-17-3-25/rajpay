@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('pagetitle') - {{$mydata['company']->companyname}}</title>
     <link rel="shortcut icon" href="{{asset('')}}assets/images/rajpaylogoremovebg.png">
-<meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
     <link href="{{asset('')}}assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
     <link href="{{asset('')}}assets/css/icons/fontawesome/styles.min.css" rel="stylesheet" type="text/css">
@@ -18,33 +19,60 @@
     <link href="{{asset('')}}assets/css/jquery-confirm.min.css" rel="stylesheet" type="text/css">
     <link href="{{asset('')}}assets/js/plugins/materialToast/mdtoast.min.css" rel="stylesheet" type="text/css">
 
+    <!-- font awesome icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <!-- for notyf -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+
+    <!-- In notify cdn -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
+
+
     <style>
-.vertical {
-   columns: 2;
-   column-gap: 0;
-   column-fill: balance;
-   column-rule: 5px solid;
-   
-   text-align: center;
-   padding: 10px;
-}
+        .vertical {
+            columns: 2;
+            column-gap: 0;
+            column-fill: balance;
+            column-rule: 5px solid;
+
+            text-align: center;
+            padding: 10px;
+        }
+
         .navbar-inverse {
-            background-color: {{$mydata['topheadcolor']->value ?? ''}} !important;
+            background-color: {
+                    {
+                    $mydata['topheadcolor']->value ?? ''
+                }
+            }
+
+            !important;
             border-color: #272e3b !important;
             border-bottom: 5px solid;
         }
 
-        .navigation > li.active > a {
+        .navigation>li.active>a {
             color: #fff !important;
-            background-color: {{$mydata['sidebarlightcolor']->value ?? '#0096FF'}};
+
+            background-color: {
+                    {
+                    $mydata['sidebarlightcolor']->value ?? '#0096FF'
+                }
+            }
+
+            ;
         }
 
-        .panel-default > .panel-heading{
+        .panel-default>.panel-heading {
             color: #fff !important;
             background-color: #272e3b !important;
         }
-        
-        .newservice{
+
+        .newservice {
             background-image: url(http://e-banker.in/assets/new.png);
             background-size: 60px;
             background-repeat: no-repeat;
@@ -53,36 +81,57 @@
         }
 
         .sidebar-default {
-            background-color: {{$mydata['sidebardarkcolor']->value ?? '#3082ab'}};
+            background-color: {
+                    {
+                    $mydata['sidebardarkcolor']->value ?? '#3082ab'
+                }
+            }
+
+            ;
         }
 
-        .sidebar-default .navigation li.active > a,
-        .sidebar-default .navigation li.active > a:hover,
-        .sidebar-default .navigation li.active > a:focus {
-          background-color: #fe961a;
-          color: {{$mydata['sidebarchildhrefcolor']->value ?? '#3082ab'}};
+        .sidebar-default .navigation li.active>a,
+        .sidebar-default .navigation li.active>a:hover,
+        .sidebar-default .navigation li.active>a:focus {
+            background-color: #fe961a;
+
+            color: {
+                    {
+                    $mydata['sidebarchildhrefcolor']->value ?? '#3082ab'
+                }
+            }
+
+            ;
         }
 
-        .sidebar-detached .sidebar-default .navigation li > a, .sidebar-detached .navigation li a > i {
+        .sidebar-detached .sidebar-default .navigation li>a,
+        .sidebar-detached .navigation li a>i {
             color: #333333;
         }
 
-        .navigation li a > i {
-            float : left;
-            top : 0;
-            margin-top : 2px;
-            margin-right : 15px;
-            -webkit-transition : opacity 0.2s ease-in-out;
-            -o-transition : opacity 0.2s ease-in-out;
-            transition : opacity 0.2s ease-in-out;
-            color : {{$mydata['sidebariconcolor']->value ?? '#409cab'}};
+        .navigation li a>i {
+            float: left;
+            top: 0;
+            margin-top: 2px;
+            margin-right: 15px;
+            -webkit-transition: opacity 0.2s ease-in-out;
+            -o-transition: opacity 0.2s ease-in-out;
+            transition: opacity 0.2s ease-in-out;
+
+            color : {
+                    {
+                    $mydata['sidebariconcolor']->value ?? '#409cab'
+                }
+            }
+
+            ;
         }
 
-        p.error{
+        p.error {
             color: #F44336;
         }
 
-        .changePic{
+        .changePic {
             position: absolute;
             width: 100%;
             height: 30%;
@@ -94,16 +143,16 @@
             line-height: 0px;
         }
 
-        .companyname{
+        .companyname {
             font-size: 20px;
         }
 
-        .navbar-brand{
-            padding : 20px;
-            height  : 100%!important;
+        .navbar-brand {
+            padding: 20px;
+            height: 100% !important;
         }
 
-        .modal{
+        .modal {
             overflow: auto;
         }
 
@@ -124,65 +173,79 @@
             -o-animation: blink 1.5s linear infinite;
         }
 
-        .news:hover .animationClass{
-            opacity: 1!important;
+        .news:hover .animationClass {
+            opacity: 1 !important;
             -webkit-animation-play-state: paused;
             -moz-animation-play-state: paused;
             -o-animation-play-state: paused;
             animation-play-state: paused;
         }
-          
-        @keyframes blink{
-            30%{opacity: .30;}
-            50%{opacity: .5;}
-            75%{opacity: .75;}
-            100%{opacity: 1;}
+
+        @keyframes blink {
+            30% {
+                opacity: .30;
+            }
+
+            50% {
+                opacity: .5;
+            }
+
+            75% {
+                opacity: .75;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
 
-        input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
             -webkit-appearance: none;
             margin: 0;
         }
-         
+
         input[type="number"] {
             -moz-appearance: textfield;
         }
 
-        .sidebar-default .navigation > li ul {
+        .sidebar-default .navigation>li ul {
             border-radius: 0px;
-            padding:10px;
+            padding: 10px;
         }
 
         /* width */
         ::-webkit-scrollbar {
-          width: 7px;
+            width: 7px;
         }
 
         /* Track */
         ::-webkit-scrollbar-track {
-          background: #f1f1f1; 
+            background: #f1f1f1;
         }
-         
+
         /* Handle */
         ::-webkit-scrollbar-thumb {
-          background: #888; 
+            background: #888;
         }
 
         /* Handle on hover */
         ::-webkit-scrollbar-thumb:hover {
-          background: #555; 
+            background: #555;
         }
-        
-        .sidebar-mobile-main .sidebar-main{
+
+        .sidebar-mobile-main .sidebar-main {
             position: absolute;
             width: 350px;
         }
 
-        .nav-tabs.nav-tabs-component > .active > a:after, .nav-tabs.nav-tabs-component > .active > a:hover:after, .nav-tabs.nav-tabs-component > .active > a:focus:after {
-        background-color: #FFC107;
+        .nav-tabs.nav-tabs-component>.active>a:after,
+        .nav-tabs.nav-tabs-component>.active>a:hover:after,
+        .nav-tabs.nav-tabs-component>.active>a:focus:after {
+            background-color: #FFC107;
         }
 
-        .nav-tabs.nav-tabs-component > li > a:after {
+        .nav-tabs.nav-tabs-component>li>a:after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -191,7 +254,7 @@
             height: 4px;
         }
 
-        .otp{
+        .otp {
             display: inline-block;
             width: 40px;
             height: 40px;
@@ -217,10 +280,13 @@
     <script type="text/javascript" src="{{asset('')}}assets/js/core/jquery.validate.min.js"></script>
     <script type="text/javascript" src="{{asset('')}}assets/js/core/jquery.form.min.js"></script>
     <script type="text/javascript" src="{{asset('')}}assets/js/plugins/forms/selects/select2.min.js"></script>
-    <script src="{{asset('')}}/assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{asset('assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
     <script src="{{ asset('/assets/js/core/jQuery.print.js') }}"></script>
     <!-- /core JS files -->
     <script type="text/javascript" src="{{asset('')}}assets/js/plugins/tables/datatables/datatables.min.js"></script>
+
+    <!-- notify script -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
 
     <script type="text/javascript" src="{{asset('')}}assets/js/core/app.js"></script>
     <script type="text/javascript" src="{{asset('')}}assets/js/core/dropzone.js"></script>
@@ -228,24 +294,24 @@
     <script type="text/javascript" src="{{asset('')}}assets/js/plugins/materialToast/mdtoast.min.js"></script>
     <script type="text/javascript" src="{{asset('')}}assets/js/core/sweetalert2.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
+        $(document).ready(function() {
             $("[name='gps_location']").remove();
-            $("form").prepend('<input type="hidden" name="gps_location" value="'+localStorage.getItem("gps_location")+'">');
+            $("form").prepend('<input type="hidden" name="gps_location" value="' + localStorage.getItem("gps_location") + '">');
 
             $('.select').select2();
 
             $('.mydate').datepicker({
-                'autoclose':true,
-                'clearBtn':true,
-                'todayHighlight':true,
-                'format':'yyyy-mm-dd'
+                'autoclose': true,
+                'clearBtn': true,
+                'todayHighlight': true,
+                'format': 'yyyy-mm-dd'
             });
 
             $('input[name="from_date"]').datepicker("setDate", new Date());
             $('input[name="to_date"]').datepicker('setStartDate', new Date());
 
-             $('input[name="to_date"]').focus(function(){
-                if($('input[name="from_date"]').val().length == 0){
+            $('input[name="to_date"]').focus(function() {
+                if ($('input[name="from_date"]').val().length == 0) {
                     $('input[name="to_date"]').datepicker('hide');
                     $('input[name="from_date"]').focus();
                 }
@@ -256,17 +322,17 @@
                 $('input[name="to_date"]').datepicker('setDate', $('input[name="from_date"]').val());
             });
 
-            $('form#searchForm').submit(function(){
+            $('form#searchForm').submit(function() {
                 $('#searchForm').find('button:submit').button('loading');
-                var fromdate =  $(this).find('input[name="from_date"]').val();
-                var todate   =  $(this).find('input[name="to_date"]').val();
-                if(fromdate.length !=0 || todate.length !=0){
+                var fromdate = $(this).find('input[name="from_date"]').val();
+                var todate = $(this).find('input[name="to_date"]').val();
+                if (fromdate.length != 0 || todate.length != 0) {
                     $('#datatable').dataTable().api().ajax.reload();
                 }
                 return false;
             });
 
-            $('#formReset').click(function () {
+            $('#formReset').click(function() {
                 $('form#searchForm')[0].reset();
                 $('form#searchForm').find('[name="from_date"]').datepicker().datepicker("setDate", new Date());
                 $('form#searchForm').find('[name="to_date"]').datepicker().datepicker("setDate", null);
@@ -276,7 +342,7 @@
             });
         });
 
-        function datatableSetup(urls, datas, onDraw=function () {}, ele="#datatable", element={}) {
+        function datatableSetup(urls, datas, onDraw = function() {}, ele = "#datatable", element = {}) {
             var options = {
                 dom: '<"datatable-scroll"t><"datatable-footer"ipl>',
                 processing: true,
@@ -286,62 +352,64 @@
                 columnDefs: [{
                     orderable: false,
                     width: '130px',
-                    targets: [ 0 ]
-                }], 
+                    targets: [0]
+                }],
                 lengthMenu: [10, 25, 50, 100],
                 language: {
-                    paginate: { 'first': 'First', 'last': 'Last', 'next': '&rarr;', 'previous': '&larr;' }
+                    paginate: {
+                        'first': 'First',
+                        'last': 'Last',
+                        'next': '&rarr;',
+                        'previous': '&larr;'
+                    }
                 },
-                drawCallback: function () {
+                drawCallback: function() {
                     $(this).find('tbody tr').slice(-3).find('.dropdown, .btn-group').addClass('dropup');
                 },
                 preDrawCallback: function() {
                     $(this).find('tbody tr').slice(-3).find('.dropdown, .btn-group').removeClass('dropup');
-                },    
-                ajax:{
-                    url : urls,
+                },
+                ajax: {
+                    url: urls,
                     type: "post",
-                    data:function( d )
-                        {
-                            d._token   = $('meta[name="csrf-token"]').attr('content');
-                            d.type     = $('[name="dataType"]').val();
-                            d.fromdate = $('#searchForm').find('[name="from_date"]').val();
-                            d.todate   = $('#searchForm').find('[name="to_date"]').val();
-                            d.searchtext = $('#searchForm').find('[name="searchtext"]').val();
-                            d.agent    = $('#searchForm').find('[name="agent"]').val();
-                            d.status   = $('#searchForm').find('[name="status"]').val();
-                            d.product  = $('#searchForm').find('[name="product"]').val();
-                        },
-                    beforeSend: function(){
+                    data: function(d) {
+                        d._token = $('meta[name="csrf-token"]').attr('content');
+                        d.type = $('[name="dataType"]').val();
+                        d.fromdate = $('#searchForm').find('[name="from_date"]').val();
+                        d.todate = $('#searchForm').find('[name="to_date"]').val();
+                        d.searchtext = $('#searchForm').find('[name="searchtext"]').val();
+                        d.agent = $('#searchForm').find('[name="agent"]').val();
+                        d.status = $('#searchForm').find('[name="status"]').val();
+                        d.product = $('#searchForm').find('[name="product"]').val();
                     },
-                    complete: function(){
+                    beforeSend: function() {},
+                    complete: function() {
                         $('#searchForm').find('button:submit').button('reset');
                         $('#formReset').button('reset');
                     },
-                    error:function(response) {
-                    }
+                    error: function(response) {}
                 },
                 columns: datas
             };
 
             $.each(element, function(index, val) {
-                options[index] = val; 
+                options[index] = val;
             });
 
             var DT = $(ele).DataTable(options).on('draw.dt', onDraw);
             return DT;
         }
     </script>
-    
+
     <script type="text/javascript">
-        var ROOT = "{{url('')}}" , SYSTEM, tpinConfirm, otpConfirm, CALLBACK, OTPCALLBACK;
+        var ROOT = "{{url('')}}",
+            SYSTEM, tpinConfirm, otpConfirm, CALLBACK, OTPCALLBACK;
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             SYSTEM = {
-                DEFAULT: function () {
-                },
+                DEFAULT: function() {},
 
-                FORMBLOCK:function (form) {
+                FORMBLOCK: function(form) {
                     form.block({
                         message: '<span class="text-semibold"><i class="icon-spinner4 spinner position-left"></i>&nbsp; Working on request</span>',
                         overlayCSS: {
@@ -361,19 +429,19 @@
                     });
                 },
 
-                FORMUNBLOCK: function (form) {
+                FORMUNBLOCK: function(form) {
                     form.unblock();
                 },
 
-                FORMSUBMIT: function(form, callback, block="none"){
+                FORMSUBMIT: function(form, callback, block = "none") {
                     form.ajaxSubmit({
-                        dataType:'json',
+                        dataType: 'json',
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        beforeSubmit:function(){
+                        beforeSubmit: function() {
                             form.find('button[type="submit"]').button('loading');
-                            if(block == "none"){
+                            if (block == "none") {
                                 form.block({
                                     message: '<span class="text-semibold"><i class="icon-spinner4 spinner position-left"></i>&nbsp; Working on request</span>',
                                     overlayCSS: {
@@ -393,13 +461,13 @@
                                 });
                             }
                         },
-                        complete: function(){
+                        complete: function() {
                             form.find('button[type="submit"]').button('reset');
-                            if(block == "none"){
+                            if (block == "none") {
                                 form.unblock();
                             }
                         },
-                        success:function(data){
+                        success: function(data) {
                             callback(data);
                         },
                         error: function(errors) {
@@ -408,19 +476,19 @@
                     });
                 },
 
-                AJAX: function(url, method, data, callback, loading="none", msg="Updating Data"){
+                AJAX: function(url, method, data, callback, loading = "none", msg = "Updating Data") {
                     $.ajax({
                         url: url,
                         type: method,
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        dataType:'json',
+                        dataType: 'json',
                         data: data,
-                        beforeSend:function(){
-                            if(loading != "none"){
+                        beforeSend: function() {
+                            if (loading != "none") {
                                 $(loading).block({
-                                    message: '<span class="text-semibold"><i class="icon-spinner4 spinner position-left"></i> '+msg+'</span>',
+                                    message: '<span class="text-semibold"><i class="icon-spinner4 spinner position-left"></i> ' + msg + '</span>',
                                     overlayCSS: {
                                         backgroundColor: '#fff',
                                         opacity: 0.8,
@@ -438,10 +506,10 @@
                                 });
                             }
                         },
-                        complete: function () {
+                        complete: function() {
                             $(loading).unblock();
                         },
-                        success:function(data){
+                        success: function(data) {
                             callback(data);
                         },
                         error: function(errors) {
@@ -450,44 +518,54 @@
                     });
                 },
 
-                SHOWERROR: function(errors, form){
-                    if(errors.status == 422){
-                        $.each(errors.responseJSON.errors, function (index, value) {
-                            form.find('[name="'+index+'"]').closest('div.form-group').append('<p class="error">'+value+'</span>');
+                SHOWERROR: function(errors, form) {
+                    if (errors.status == 422) {
+                        $.each(errors.responseJSON.errors, function(index, value) {
+                            form.find('[name="' + index + '"]').closest('div.form-group').append('<p class="error">' + value + '</span>');
                         });
                         form.find('p.error').first().closest('.form-group').find('input').focus();
-                        setTimeout(function () {
+                        setTimeout(function() {
                             form.find('p.error').remove();
                         }, 5000);
-                    }else if(errors.status == 400){
-                        mdtoast.error("Oops! "+errors.responseJSON.message, { position: "top center" });
-                    }else{
-                        if(errors.message){
-                            mdtoast.error("Oops! "+errors.message, { position: "top center" });
-                        }else{
-                            mdtoast.error("Oops! "+errors.statusText, { position: "top center" });
+                    } else if (errors.status == 400) {
+                        mdtoast.error("Oops! " + errors.responseJSON.message, {
+                            position: "top center"
+                        });
+                    } else {
+                        if (errors.message) {
+                            mdtoast.error("Oops! " + errors.message, {
+                                position: "top center"
+                            });
+                        } else {
+                            mdtoast.error("Oops! " + errors.statusText, {
+                                position: "top center"
+                            });
                         }
                     }
                 },
 
-                NOTIFY: function(msg, type="success",element="none"){
-                    if(element == "none"){
-                        switch(type){
+                NOTIFY: function(msg, type = "success", element = "none") {
+                    if (element == "none") {
+                        switch (type) {
                             case "success":
-                                mdtoast.success("Success : "+msg, { position: "top center" });
-                            break;
+                                mdtoast.success("Success : " + msg, {
+                                    position: "top center"
+                                });
+                                break;
 
                             default:
-                                mdtoast.error("Oops! "+msg, { position: "top center" });
+                                mdtoast.error("Oops! " + msg, {
+                                    position: "top center"
+                                });
                                 break;
                         }
-                    }else{
+                    } else {
                         element.find('div.alert').remove();
-                        element.prepend(`<div class="alert bg-`+type+` alert-styled-left">
-                            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button> `+msg+`
+                        element.prepend(`<div class="alert bg-` + type + ` alert-styled-left">
+                            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button> ` + msg + `
                         </div>`);
 
-                        setTimeout(function(){
+                        setTimeout(function() {
                             element.find('div.alert').remove();
                         }, 10000);
                     }
@@ -497,6 +575,39 @@
             SYSTEM.DEFAULT();
         });
     </script>
+
+    <!-- THIS IS THE NOTIFY CODE -->
+    <script>
+        function NOTIFY(message, type = 'success') {
+            const bgClass = {
+                success: 'bg-success text-white',
+                error: 'bg-danger text-white',
+                danger: 'bg-danger text-white',
+                warning: 'bg-warning text-dark',
+                info: 'bg-info text-white'
+            } [type] || 'bg-secondary text-white';
+
+            const toast = document.createElement('div');
+            toast.className = `toast align-items-center ${bgClass} border-0 show`;
+            toast.style.minWidth = '250px';
+            toast.setAttribute('role', 'alert');
+            toast.innerHTML = `
+            <div class="d-flex">
+                <div class="toast-body">${message}</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" onclick="this.parentElement.parentElement.remove();"></button>
+            </div>
+        `;
+
+            document.getElementById('notify-container').appendChild(toast);
+
+            // Auto remove after 3 seconds
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+    </script>
+
+
     @stack('script')
 </head>
 
@@ -506,22 +617,22 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-header">
             @if ($mydata['company']->logo)
-                <div class="vertical">
+            <div class="vertical">
                 <div>
-                <a class="navbar-brand no-padding" href="javascript:void(0)">
-                    <img src="{{asset('')}}public/{{$mydata['company']->logo}}" class=" img-responsive" alt="">
-                </a>
+                    <a class="navbar-brand no-padding" href="javascript:void(0)">
+                        <img src="{{asset('')}}public/{{$mydata['company']->logo}}" class=" img-responsive" alt="">
+                    </a>
                 </div>
-                <div>                 
-                <a class="navbar-brand no-padding" href="javascript:void(0)">
-                    <img src="{{asset('')}}public/logos/t-logo.png" class=" img-responsive" style="width:75%; height:75%;" alt="">
-                </a>
-                </div>                 
+                <div>
+                    <a class="navbar-brand no-padding" href="javascript:void(0)">
+                        <img src="{{asset('')}}public/logos/t-logo.png" class=" img-responsive" style="width:75%; height:75%;" alt="">
+                    </a>
                 </div>
+            </div>
             @else
-                <a class="navbar-brand" href="javascript:void(0)" style="padding: 17px">
-                    <span class="companyname" style="color: black">{{$mydata['company']->companyname}}</span>
-                </a>
+            <a class="navbar-brand" href="javascript:void(0)" style="padding: 17px">
+                <span class="companyname" style="color: black">{{$mydata['company']->companyname}}</span>
+            </a>
             @endif
 
             <ul class="nav navbar-nav visible-xs-block">
@@ -556,5 +667,9 @@
             </div>
         </div>
     </div>
+
+    <div id="notify-container" class="position-fixed top-0 end-0 p-3" style="z-index: 9999;"></div>
+
 </body>
+
 </html>

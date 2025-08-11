@@ -16,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
         \Schema::defaultStringLength(191);
 
         try {
+            // dd($_SERVER['HTTP_HOST']);
             view()->composer('*', function ($view){
                 $mydata['sessionOut'] = 0;//\App\Model\PortalSetting::where('code', 'sessionout')->first()->value;
                 $mydata['complaintsubject'] = [];

@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BalanceCheckController;
+use App\Http\Controllers\OndcController;
 use App\Http\Controllers\PanUatController;
 use App\Http\Controllers\Service\AccountController;
 
@@ -252,3 +253,12 @@ Route::get('/search-logs', [PanUatController::class, 'searchLogs'])->name('searc
 
 
 Route::any('callback/nsdluat' , [AccountController::class, 'nsdlCallback']);
+
+Route::prefix('ondc')->group(function(){
+Route::get('shopneo/seller-registration',[OndcController::class,'index']);
+Route::post('ondc-seller/store',[OndcController::class,'storeSeller'])->name('ondc.seller.store');
+Route::delete('/seller-delete/{id}', [OndcController::class, 'sellerDelete'])->name('seller.delete');
+});
+
+
+
